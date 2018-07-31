@@ -1,0 +1,37 @@
+<p>
+	<strong>First Name:</strong>
+	<%= @user.first_name %>
+</p>
+
+<p>
+	<strong>Last Name:</strong>
+	<%= @user.last_name %>
+</p>
+
+<p>
+	<strong>Date of Birth:</strong>
+	<%= @user.dob %>
+</p>
+
+<p>
+	<strong>Marital Status:</strong>
+	<%= @user.marital_status %>
+</p>
+
+<p>
+	<strong>Social Insurance Number:</strong>
+	<%= @user.sin %>
+</p>
+
+<p>
+	<strong>Hire Date:</strong>
+	<%= @user.hire_date %>
+</p>
+
+<p>
+	<strong>Preferences:</strong>
+	<%= @user.prefs %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
