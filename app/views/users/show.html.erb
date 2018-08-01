@@ -38,5 +38,9 @@
 	<%= @user.prefs %>
 </p>
 
+<% if @user.can_add_hours? %>
+	<p>This user can add hours to an employee's timesheet.</p>
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
