@@ -26,10 +26,10 @@
 
   <p>
     <span>Roles:</span><br>
-    <%= form.check_box(:role_employee, {checked: @user.has_role?('employee')}) %>
-    <%= form.label :employee %><br>
-    <%= form.check_box(:role_administrator, {checked: @user.has_role?('administrator')}) %>
-    <%= form.label :administrator %><br>
+    <% User.available_role_names.each do |role| %>
+      <%= form.check_box("role_#{role}", {checked: @user.has_role?(role)}) %>
+      <%= form.label role %><br>
+    <% end %>
   </p>
 
   <p>
