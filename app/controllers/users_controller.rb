@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		User.available_role_names.each do |role|
-			if params[:user]["role_#{role}"] == '1'
+			if params[:user]["role_#{role}"] == '1' # checkbox has a value of '1' if true
 				@user.add_role role
 			end
 		end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 
 		User.available_role_names.each do |role|
-			if params[:user]["role_#{role}"] == '1'
+			if params[:user]["role_#{role}"] == '1' # checkbox has a value of '1' if true
 				@user.add_role role
 			else
 				@user.remove_role role
