@@ -19,6 +19,14 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 
+		if params[:user][:role_employee] == '1'
+			@user.add_role 'employee'
+		end
+
+		if params[:user][:role_administrator] == '1'
+			@user.add_role 'administrator'
+		end
+
 		if @user.save
 			redirect_to @user
 		else
@@ -28,6 +36,18 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
+
+		if params[:user][:role_employee] == '1'
+			@user.add_role 'employee'
+		else
+			@user.remove_role 'employee'
+		end
+
+		if params[:user][:role_administrator] == '1'
+			@user.add_role 'administrator'
+		else
+			@user.remove_role 'administrator'
+		end
 
 		if @user.update(user_params)
 			redirect_to @user

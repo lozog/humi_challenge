@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_31_233810) do
+ActiveRecord::Schema.define(version: 2018_08_01_000028) do
+
+  create_table "royce_connector", force: :cascade do |t|
+    t.string "roleable_type", null: false
+    t.integer "roleable_id", null: false
+    t.integer "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_royce_connector_on_role_id"
+    t.index ["roleable_id", "roleable_type"], name: "index_royce_connector_on_roleable_id_and_roleable_type"
+    t.index ["roleable_type", "roleable_id"], name: "index_royce_connector_on_roleable_type_and_roleable_id"
+  end
+
+  create_table "royce_role", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_royce_role_on_name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"

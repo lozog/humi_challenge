@@ -1,0 +1,21 @@
+class CreateRoyce < ActiveRecord::Migration[5.2]
+
+  def change
+
+    create_table :royce_connector do |t|
+      t.references :roleable, polymorphic: true, null: false
+      t.references :role, null: false
+      t.timestamps
+    end
+
+    add_index :royce_connector, [:roleable_id, :roleable_type]
+
+    create_table :royce_role do |t|
+      t.string :name, null: false
+      t.timestamps
+    end
+
+    add_index :royce_role, :name
+
+  end
+end
